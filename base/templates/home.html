@@ -1,0 +1,26 @@
+{% extends 'main.html' %} 
+
+
+{% block content %}
+
+<h3 style="color:green;text-align:center">{{time}}</h3>
+<a href="{% url 'create-room' %}">create new</a>
+<h1>Hello Home Template</h1>
+
+<input type="file" multiple />
+<hr/>
+{% for room in rooms %}
+<p>
+    {{ room.id }}, {{room.name}}
+
+    <br/>
+    <a href={% url 'delete-room' room.id %}>del</a>
+    <a href="/update_room/{{room.id}}">{{room.name}}</a>
+    <h1>{{ room.host.username }}</h1>
+    <h2>{{ room.topic.name }}</h2>
+<hr/>
+</p>
+{% endfor %}
+
+
+{% endblock %}
